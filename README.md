@@ -4,7 +4,7 @@ Estudio de casos y controles del microbioma en la Enfermedad Celíaca (EC) media
 
 En este repositorio se encuentral los códigos utilizados para realizar el análisis.
 
-##PASOS DEL ANÁLISIS##
+## PASOS DEL ANÁLISIS ##
 
 ***1. Detección de variantes biológicas con Dada2 y Asignación taxonómica con SILVA***
 

@@ -17,6 +17,8 @@ Con los resultados anteriores es posible hacer un análisis de diversidad. El ar
 
 Lo siguiente que se puede hacer después de analizar los cambios en la diversidad global de las muestras es enfocarse en taxones específicos que pueden estar asociados con la enfermedad o el tratamiento que se está estudiando. Eso podría evaluarse con un análisis de abundancia diferencial. Este archivo "DifferentialAbundance.R" contiene un conjunto de instrucciones para realizar el análisis de abundancia diferencial utilizando DESeq2. Al igual que el archivo anterior, este no es un script que se ejecute automáticamente, debe ejecutarlo línea por línea y revisar sus resultados en cada paso.
 
+Finalmente, es posible utilizar la información taxonómica y de abundancia de taxones para inferir el potencial metabólico de las comunidades microbianas en las muestras. Este script "picrust2Qimme2.R" adapta los formatos de los archivos de salida obtenidos en el análisis anterior para importarlos a Qiime2 y ejecutar el análisis de inferencia metabólica usando el plugin PICRUST2 de Qiime2, este script también cambia el formatode  los archivos salida  obtenidos de PICRUST2 formato separado por tabulaciones que se puede leer en Excel o R.
+
 
 
 # Assessing microbiome profiles of celiac disease patients
@@ -36,3 +38,4 @@ Diversity.R file contains the instructions to merge the results from the differe
 
 Nex thing you can do after analyzing changes in the global diversity of your samples is to focus in specific taxons that may be associated to the disease or treatment you are studying. That could be assessed with a differential abundance analysis. This file "DifferentialAbundance.R" contains a set of instructions to perform the differential abundance analysis using DESeq2. Like the previous file, this is not a script to run automatically, you should run it line by line and review your results in each step.
 
+Finally, it is possible to use the taxonomic and abundance of taxa information to infer the metabolic potential of the microbial communities in the samples. This script "picrust2Qimme2" adapts the format files of the outputs obtained in the previous analysis to import them to Qiime2 and runt the metabolic inference analysis using the Qiime2 plugging PICRUST2, this script also changes the PICRUST2 output format of the obtained files to a tab-separated format that can be read in Excel or R.

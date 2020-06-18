@@ -4,6 +4,8 @@ Estudio de casos y controles del microbioma en la Enfermedad Celíaca (EC) media
 
 En este repositorio se encuentral los códigos utilizados para realizar el análisis.
 
+##PASOS DEL ANÁLISIS##
+
 ***1. Detección de variantes biológicas con Dada2 y Asignación taxonómica con SILVA***
 
 El primer paso en el análisis es filtrar las lecturas por calidad. Se deben buscar los parámetros óptimos explorando el filtrado de sus datos con diferentes parámetros. Hay dos opciones disponibles para este paso: cuando las lecturas están emparejadas, use primero cutadapt.h para eliminar los cebadores, luego flash.sh para fusionar los pares y finalmente filtering_SE.R para eliminar secuencias de mala calidad. Si las lecturas son de un solo extremo, haga lo mismo pero omita el paso flash.sh. 
@@ -11,12 +13,15 @@ El primer paso en el análisis es filtrar las lecturas por calidad. Se deben bus
 Después de filtrar las lecturas, el segundo paso es inferir las variantes de secuencias y realizar la asignación taxonómica utilizando DADA2 y la base de datos SILVA. Para hacer esto, use el script Inf_Chim_tax.R. Sin embargo, si sus datos hacen que el análisis se quede sin memoria, utilice el script InfChim_tax_2.R en su lugar. El primer script hace la inferencia y asignacion taxonómica de manera simultánea para todas las muestras y el segundo la hace muestra por muestra, ahorrando memoria RAM pero haciendo el análisis mas lento.
 
 ***2. Análisis de diversidad con Phyloseq y Vegan***
+
 Con los resultados anteriores es posible hacer un análisis de diversidad. El archivo Diversity.R contiene las instrucciones para fusionar los resultados de diferentes estudios analizados con las instrucciones anteriores, filtrar las muestras y los taxones de acuerdo con la información de las curvas de rarefacción y realizar la inferencia de diversidad alfa y beta y el análisis estadístico para comparar estos valores entre las muestras usando Shannon, Simpson, Chao1 y PCoA junto con Distancia ponderada de Unifrac. Este no es un script que se ejecute automáticamente porque se debe tener en cuenta el resultado del análisis en cada paso para decidir los parámetros del siguiente. Esto es solo una guía de los pasos en el análisis y debe ejecutarlo línea por línea. También contiene los códigos para hacer gráficos de buena calidad de los resultados usando ggplot2.
 
 ***3. Análisis de Abundancia diferencial con DESeq2 incluido en phyloseq***
+
 Lo siguiente que se puede hacer después de analizar los cambios en la diversidad global de las muestras es enfocarse en taxones específicos que pueden estar asociados con la enfermedad o el tratamiento que se está estudiando. Eso podría evaluarse con un análisis de abundancia diferencial. Este archivo "DifferentialAbundance.R" contiene un conjunto de instrucciones para realizar el análisis de abundancia diferencial utilizando DESeq2. Al igual que el archivo anterior, este no es un script que se ejecute automáticamente, debe ejecutarlo línea por línea y revisar sus resultados en cada paso.
 
 ***4. Inferencia del potencial metabólico de las comunidadad microbianas con PICRUST2***
+
 Finalmente, es posible utilizar la información taxonómica y de abundancia de taxones para inferir el potencial metabólico de las comunidades microbianas en las muestras. Este script "picrust2Qimme2.R" adapta los formatos de los archivos de salida obtenidos en el análisis anterior para importarlos a Qiime2 y ejecutar el análisis de inferencia metabólica usando el plugin PICRUST2 de Qiime2, este script también cambia el formatode  los archivos salida  obtenidos de PICRUST2 formato separado por tabulaciones que se puede leer en Excel o R.
 
 
